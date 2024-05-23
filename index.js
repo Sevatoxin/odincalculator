@@ -8,6 +8,10 @@
 // - Let the numbers be on screen when click in a number button
 // - Numbers appear always on the right to build a bigger number
 
+//Define all DOM elements
+
+
+//Functions
 function add(num1, num2) {
     return (num1 + num2);
 }
