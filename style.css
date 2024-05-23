@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap');
+
+* {
+  font-family: 'Radio Canada Big';
+  font-size: 18px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #24283b;
+  text-align: center;
+  margin: 0;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+button {
+  background-color: #414868;
+  font-size: 32px;
+  /* border: 3px solid #24283b; */
+  /* border-radius: 25px; */
+  border: none;
+}
+
+button:hover {
+  background-color: #565f89;
+}
+
+h1 {
+  font-size: 52px;
+  margin-top: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(1em, 5em));
+  grid-template-rows: repeat(5, minmax(1em, 5em));
+  /* gap: 3px; */
+}
+
+.clear {
+  grid-column: span 4;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.calculator-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
+  padding: 3em 2em;
+  background-color: #565f89;
+  border: 3px solid #a9b1d6;
+  border-radius: 35px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  padding-top: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  margin-bottom: 0;
+}
+
+.screen {
+  display: flex;
+  min-width: 10em;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 42px;
+  color: #565f8978;
+  background-color: #24283b;
+  border-radius: 25px;
+  padding: 8px 12px;
+}
+
+.operation {
+  background-color: #73daca;
+}
+
+.clear {
+  background-color: #f7768e;
+}

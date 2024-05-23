@@ -3,38 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator | The Odin Project</title>
+    <title>WebCalc | The Odin Project</title>
     <link rel="stylesheet" href="style.css">
     <script src="index.js"></script>
 </head>
 <body>
     <div class="header">
-
+        <h1>WebCalc</h1>
     </div>
 
     <div class="content">
-        <div class="calculator container">
-             <button class="num1 item"></button>
-             <button class="num2 item"></button>
-             <button class="num3 item"></button>
-             <button class="plus item"></button>
-             <button class="num4 item"></button>
-             <button class="num5 item"></button>
-             <button class="num6 item"></button>
-             <button class="minus item"></button>
-             <button class="num7 item"></button>
-             <button class="num8 item"></button>
-             <button class="num9 item"></button>
-             <button class="multiply item"></button>
-             <button class="num0 item"></button>
-             <button class="dot item"></button>
-             <button class="operate item"></button>
-             <button class="divide item"></button>
+        <div class="calculator-container">
+            <div class="screen">
+                0
+            </div>
+            <div class="grid">
+                <button class="clear item">AC</button>
+                <button class="num1 item">1</button>
+                <button class="num2 item">2</button>
+                <button class="num3 item">3</button>
+                <button class="plus item operation">+</button>
+                <button class="num4 item">4</button>
+                <button class="num5 item">5</button>
+                <button class="num6 item">6</button>
+                <button class="minus item operation">-</button>
+                <button class="num7 item">7</button>
+                <button class="num8 item">8</button>
+                <button class="num9 item">9</button>
+                <button class="multiply item operation">x</button>
+                <button class="num0 item">0</button>
+                <button class="dot item">.</button>
+                <button class="operate item operation">=</button>
+                <button class="divide item operation">/</button>
+            </div>
         </div>
     </div>
 
     <div class="footer">
-
+        <div class="container">
+            <div class="copyright">Made By Seva - 2024</div>
+        </div>
     </div>
 </body>
 </html>
