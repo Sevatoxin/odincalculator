@@ -19,15 +19,46 @@ button {
   font-size: 32px;
   border-radius: 25px;
   border: none;
+  box-shadow: 0 0 5px black;
 }
 
 button:hover {
-  background-color: #565f89;
+  background-color: #c0caf5;
+}
+
+button.operation:hover {
+  background-color: #acede5;
+}
+
+button.clear:hover {
+  background-color: #ead2ae;
+}
+
+button:active {
+  background-color: #24283b;
+}
+
+button.operation:active {
+  background-color: #24283b;
+}
+
+button.clear:active {
+  background-color: #24283b;
 }
 
 h1 {
   font-size: 52px;
   margin-top: 0;
+  color:  #b4f9f8;
+}
+
+a {
+  color:  #b4f9f8;
+  font-style: italic;
+}
+
+a:hover {
+  color: #565f89;
 }
 
 .grid {
@@ -63,8 +94,9 @@ h1 {
   gap: 2em;
   padding: 3em 2em;
   background-color: #565f89;
-  border: 3px solid #a9b1d6;
+  border: 4px solid #a9b1d6;
   border-radius: 35px;
+  box-shadow: 0 0 35px rgb(17, 17, 17);
 }
 
 .header {
@@ -81,6 +113,8 @@ h1 {
   align-items: center;
   padding: 1em;
   margin-bottom: 0;
+  color:  #b4f9f8;
+  font-style: italic;
 }
 
 .screen {
@@ -90,8 +124,9 @@ h1 {
   justify-content: flex-end;
   align-items: center;
   font-size: 42px;
-  color: #565f8978;
+  color: #b4f9f8;
   background-color: #24283b;
+  box-shadow: 0 0 10px #b4f9f8;
   border-radius: 25px;
   padding: 8px 12px;
 }

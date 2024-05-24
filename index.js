@@ -11,6 +11,16 @@
 //Define all DOM elements
 const calcGrid = document.querySelector(".grid");
 const calcButtons = ["ac", "1", "2", "3", "+", "4", "5", "6", "-", "7", "8", "9", "x", "0", ".", "=", "/"]
+const screen = document.querySelector(".screen");
+const screenLength = 12;
+
+//Calculator logic
+let number1 = [0];
+let number2 = [0];
+let operated = false;
+let currentNumber = 1;
+
+screen.textContent = numberToScreen(number1);
 
 //Add all calculator buttons to DOM
 calcButtons.forEach((button) => {
@@ -20,18 +30,27 @@ calcButtons.forEach((button) => {
    newCalcButton.classList.add("item");
    button = button.toUpperCase();
    newCalcButton.textContent = button;
-   console.log(button);
 
    switch (button) {
-    case "+": case "-": case "X": case "/":
+    case "+": case "-": case "X": case "/": case "=":
         newCalcButton.classList.add("operation");
+        if (button === "X") newCalcButton.textContent = "x";
         break;
 
     case "AC":
         newCalcButton.classList.add("clear");
+        newCalcButton.addEventListener("click", (ev) => {
+            clearScreen();
+        })
+        break;
+    
+    case ".":
         break;
 
     default:
+        newCalcButton.addEventListener("click", (ev) => {
+            addButtonNumberToScreen(newCalcButton);
+        });
         break;
    }
 
@@ -62,4 +81,27 @@ function divide(num1, num2) {
 
 function operate(num1, num2, operation) {
     return;
+}
+
+function numberToScreen(numberArr) {
+    let screenNumber = "";
+
+    numberArr.forEach((numb) => {
+        screenNumber += `${numb}`;
+    });
+   
+    return screenNumber;
+}
+
+function addButtonNumberToScreen (button) {
+    if (number1[0] == 0) number1.shift();
+    number1.push(Number(button.textContent));
+    number1.length < screenLength ? screen.textContent = numberToScreen(number1) : screen.textContent = screen.textContent;
+}
+
+function clearScreen() {
+    number1 = [0];
+    number2 = [0];
+    operated = false;
+    screen.textContent = numberToScreen(number1);
 }
