@@ -9,7 +9,39 @@
 // - Numbers appear always on the right to build a bigger number
 
 //Define all DOM elements
+const calcGrid = document.querySelector(".grid");
+const calcButtons = ["ac", "1", "2", "3", "+", "4", "5", "6", "-", "7", "8", "9", "x", "0", ".", "=", "/"]
 
+//Add all calculator buttons to DOM
+calcButtons.forEach((button) => {
+   const newCalcButton = document.createElement("button");
+
+   newCalcButton.classList.add(`button-${button}`);
+   newCalcButton.classList.add("item");
+   button = button.toUpperCase();
+   newCalcButton.textContent = button;
+   console.log(button);
+
+   switch (button) {
+    case "+": case "-": case "X": case "/":
+        newCalcButton.classList.add("operation");
+        break;
+
+    case "AC":
+        newCalcButton.classList.add("clear");
+        break;
+
+    default:
+        break;
+   }
+
+   calcGrid.appendChild(newCalcButton);
+});
+
+//Event Listeners for keyboard
+window.addEventListener("keydown", (ev) => {
+    console.log(ev);
+})
 
 //Functions
 function add(num1, num2) {
