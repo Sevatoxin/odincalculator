@@ -38,6 +38,8 @@ calcButtons.forEach((button) => {
     case "+": case "-": case "X": case "/":
         newCalcButton.classList.add("operation");
         if (button === "X") newCalcButton.textContent = "x";
+
+        //Save current operator
         newCalcButton.addEventListener("click", (ev) => {
             operated = true;
             if (currentOperation === "") currentOperation = button;
@@ -64,6 +66,13 @@ calcButtons.forEach((button) => {
 
     default:
         newCalcButton.addEventListener("click", (ev) => {
+            if (calculated == true) {
+                operated = false;
+                calculated = false;
+                currentOperation = "";
+                number1 = [0];
+                number2 = [0];
+            }
             addButtonnumberToScreenNumber(newCalcButton);
         });
         break;
@@ -131,7 +140,8 @@ function clear() {
 }
 
 function calculate() {
-    if (currentOperation != undefined) {
+    console.log(currentOperation);
+    if (currentOperation != undefined || currentOperation == "") {
         let num1;
         let num2;
         if (calculated != true) {
