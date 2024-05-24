@@ -20,6 +20,7 @@ let number2 = [0];
 let operated = false;
 let currentNumber = 1;
 let currentOperation = "";
+let calculated = false;
 
 screen.textContent = numberToScreen(number1);
 
@@ -46,6 +47,9 @@ calcButtons.forEach((button) => {
     
     case "=":
         newCalcButton.classList.add("operation");
+        newCalcButton.addEventListener("click", (ev) => {
+            calculate();
+        })
         break;
 
     case "AC":
@@ -124,4 +128,35 @@ function clear() {
     operated = false;
     currentOperation = "";
     screen.textContent = numberToScreen(number1);
+}
+
+function calculate() {
+    if (currentOperation != undefined) {
+        let num1;
+        let num2;
+        if (calculated != true) {
+            console.log("test")
+            num1 = numberToScreen(number1);
+            num2 = numberToScreen(number2);
+            num1 = +num1;
+            num2 = +num2;
+            calculated = true;
+        }
+        else {
+            num1 = number1;
+            num2 = number2;
+        }
+
+        let result;
+
+        if (currentOperation === "+") result = add(num1, num2);
+        if (currentOperation === "-") result = subtract(num1, num2);
+        if (currentOperation === "X") result = multiply(num1, num2);
+        if (currentOperation === "/") result = divide(num1, num2);  
+        
+        screen.textContent = result;
+        number1 = result;
+        number2 = num2;
+        console.log(number1);
+    };
 }
