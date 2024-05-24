@@ -19,6 +19,7 @@ let number1 = [0];
 let number2 = [0];
 let operated = false;
 let currentNumber = 1;
+let currentOperation = "";
 
 screen.textContent = numberToScreen(number1);
 
@@ -31,16 +32,26 @@ calcButtons.forEach((button) => {
    button = button.toUpperCase();
    newCalcButton.textContent = button;
 
+   //Add classes and click events to specific buttons
    switch (button) {
-    case "+": case "-": case "X": case "/": case "=":
+    case "+": case "-": case "X": case "/":
         newCalcButton.classList.add("operation");
         if (button === "X") newCalcButton.textContent = "x";
+        newCalcButton.addEventListener("click", (ev) => {
+            operated = true;
+            if (currentOperation === "") currentOperation = button;
+            screen.textContent = numberToScreen(number2);
+        })
+        break;
+    
+    case "=":
+        newCalcButton.classList.add("operation");
         break;
 
     case "AC":
         newCalcButton.classList.add("clear");
         newCalcButton.addEventListener("click", (ev) => {
-            clearScreen();
+            clear();
         })
         break;
     
@@ -49,7 +60,7 @@ calcButtons.forEach((button) => {
 
     default:
         newCalcButton.addEventListener("click", (ev) => {
-            addButtonNumberToScreen(newCalcButton);
+            addButtonnumberToScreenNumber(newCalcButton);
         });
         break;
    }
@@ -59,7 +70,7 @@ calcButtons.forEach((button) => {
 
 //Event Listeners for keyboard
 window.addEventListener("keydown", (ev) => {
-    console.log(ev);
+    // console.log(ev);
 })
 
 //Functions
@@ -93,15 +104,24 @@ function numberToScreen(numberArr) {
     return screenNumber;
 }
 
-function addButtonNumberToScreen (button) {
-    if (number1[0] == 0) number1.shift();
-    number1.push(Number(button.textContent));
-    number1.length < screenLength ? screen.textContent = numberToScreen(number1) : screen.textContent = screen.textContent;
+function addButtonnumberToScreenNumber (button) {
+    if (!operated) {
+        if (number1[0] == 0 && number1.length == 1) number1.shift();
+        number1.push(Number(button.textContent));
+        number1.length < screenLength ? screen.textContent = numberToScreen(number1) : screen.textContent = screen.textContent;
+    }
+
+    if (operated) {
+        if (number2[0] == 0 && number2.length == 1) number2.shift();
+        number2.push(Number(button.textContent));
+        number2.length < screenLength ? screen.textContent = numberToScreen(number2) : screen.textContent = screen.textContent;
+    }
 }
 
-function clearScreen() {
+function clear() {
     number1 = [0];
     number2 = [0];
     operated = false;
+    currentOperation = "";
     screen.textContent = numberToScreen(number1);
 }

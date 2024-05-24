@@ -8,6 +8,7 @@
 body {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   background-color: #24283b;
   text-align: center;
   margin: 0;
@@ -47,8 +48,8 @@ button.clear:active {
 }
 
 h1 {
-  font-size: 52px;
-  margin-top: 0;
+  font-size: 68px;
+  margin: 0;
   color:  #b4f9f8;
 }
 
