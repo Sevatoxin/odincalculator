@@ -51,6 +51,7 @@ h1 {
   font-size: 58px;
   margin: 0;
   color:  #b4f9f8;
+  text-shadow: 4px 4px 7px black;
 }
 
 a {
@@ -114,7 +115,7 @@ a:hover {
   align-items: center;
   padding: 1em;
   margin-bottom: 0;
-  color:  #b4f9f8;
+  color:  #2ac3de;
   font-style: italic;
 }
 

@@ -14,7 +14,7 @@ const calcButtons = ["ac", "1", "2", "3", "+", "4", "5", "6", "-", "7", "8", "9"
 const screen = document.querySelector(".screen");
 const screenLength = 12;
 
-//Calculator logic
+//Calculator logic variables
 let number1 = [0];
 let number2 = [0];
 let operated = false;
@@ -45,10 +45,17 @@ calcButtons.forEach((button) => {
             if (currentOperation === "") currentOperation = button;
             screen.textContent = numberToScreen(number2);
         })
+
+        //Add string class to specific button
+        if (button == "+") newCalcButton.classList.add("plus");
+        if (button == "-") newCalcButton.classList.add("minus");
+        if (button == "/") newCalcButton.classList.add("division");
+
         break;
     
     case "=":
         newCalcButton.classList.add("operation");
+        newCalcButton.classList.add("equal");
         newCalcButton.addEventListener("click", (ev) => {
             calculate();
         })
@@ -62,18 +69,14 @@ calcButtons.forEach((button) => {
         break;
     
     case ".":
+        newCalcButton.addEventListener("click", (ev) => {
+            addButtonnumberToScreenNumber(newCalcButton);
+        })
         break;
 
     default:
         newCalcButton.addEventListener("click", (ev) => {
-            if (calculated == true) {
-                operated = false;
-                calculated = false;
-                currentOperation = "";
-                number1 = [0];
-                number2 = [0];
-            }
-            addButtonnumberToScreenNumber(newCalcButton);
+            useNumberButton(newCalcButton);
         });
         break;
    }
@@ -83,7 +86,27 @@ calcButtons.forEach((button) => {
 
 //Event Listeners for keyboard
 window.addEventListener("keydown", (ev) => {
-    // console.log(ev);
+    let key = ev.key;
+    let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let operators = ["+", "-", "x", "/", "="];
+    let targetButton;
+    if (numbers.includes(+key) || operators.includes(key)) {
+        if (numbers.includes(+key)) {
+            console.log("includes number")
+            targetButton = document.querySelector(`.button-${key}`);
+        };
+        if (operators.includes(key)) {
+            console.log("includes operator")
+            console.log(key);
+            if (key == "+") targetButton = document.querySelector(".plus");
+            if (key == "-") targetButton = document.querySelector(".minus");
+            if (key == "/") targetButton = document.querySelector(".division");
+            if (key == "=") targetButton = document.querySelector(".equal");
+        }
+
+        targetButton.click();
+    }
+
 })
 
 //Functions
@@ -107,6 +130,17 @@ function operate(num1, num2, operation) {
     return;
 }
 
+function useNumberButton(button) {
+    if (calculated == true) {
+        operated = false;
+        calculated = false;
+        currentOperation = "";
+        number1 = [0];
+        number2 = [0];
+    }
+    addButtonnumberToScreenNumber(button);
+}
+
 function numberToScreen(numberArr) {
     let screenNumber = "";
 
@@ -120,13 +154,13 @@ function numberToScreen(numberArr) {
 function addButtonnumberToScreenNumber (button) {
     if (!operated) {
         if (number1[0] == 0 && number1.length == 1) number1.shift();
-        number1.push(Number(button.textContent));
+        number1.push(button.textContent);
         number1.length < screenLength ? screen.textContent = numberToScreen(number1) : screen.textContent = screen.textContent;
     }
 
     if (operated) {
         if (number2[0] == 0 && number2.length == 1) number2.shift();
-        number2.push(Number(button.textContent));
+        number2.push(button.textContent);
         number2.length < screenLength ? screen.textContent = numberToScreen(number2) : screen.textContent = screen.textContent;
     }
 }
@@ -140,12 +174,10 @@ function clear() {
 }
 
 function calculate() {
-    console.log(currentOperation);
     if (currentOperation != undefined || currentOperation == "") {
         let num1;
         let num2;
         if (calculated != true) {
-            console.log("test")
             num1 = numberToScreen(number1);
             num2 = numberToScreen(number2);
             num1 = +num1;
@@ -158,15 +190,15 @@ function calculate() {
         }
 
         let result;
-
         if (currentOperation === "+") result = add(num1, num2);
         if (currentOperation === "-") result = subtract(num1, num2);
         if (currentOperation === "X") result = multiply(num1, num2);
         if (currentOperation === "/") result = divide(num1, num2);  
         
+        result = (Math.round((result * 10000))) / 10000;
         screen.textContent = result;
         number1 = result;
         number2 = num2;
-        console.log(number1);
+
     };
 }
