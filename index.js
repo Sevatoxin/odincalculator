@@ -69,6 +69,7 @@ calcButtons.forEach((button) => {
         break;
     
     case ".":
+        newCalcButton.classList.add("dot");
         newCalcButton.addEventListener("click", (ev) => {
             addButtonnumberToScreenNumber(newCalcButton);
         })
@@ -88,7 +89,7 @@ calcButtons.forEach((button) => {
 window.addEventListener("keydown", (ev) => {
     let key = ev.key;
     let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    let operators = ["+", "-", "x", "/", "=", "Enter", "Escape"];
+    let operators = ["+", "-", "x", "/", "=", "Enter", "Escape", "."];
     let targetButton;
     if (numbers.includes(+key) || operators.includes(key)) {
         if (numbers.includes(+key)) {
@@ -100,6 +101,8 @@ window.addEventListener("keydown", (ev) => {
             if (key == "/") targetButton = document.querySelector(".division");
             if (key == "=" || key =="Enter") targetButton = document.querySelector(".equal");
             if (key == "Escape") targetButton = document.querySelector(".clear");
+            if (key == ".") targetButton = document.querySelector(".dot");
+            if (key == "x") targetButton = document.querySelector(`.button-${key}`);
         }
 
         targetButton.click();
