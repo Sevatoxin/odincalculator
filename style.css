@@ -65,8 +65,8 @@ a:hover {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(1em, 5em));
-  grid-template-rows: repeat(5, minmax(1em, 5em));
+  grid-template-columns: repeat(4, minmax(1em, 4em));
+  grid-template-rows: repeat(5, minmax(1em, 4em));
   gap: 3px;
 }
 
@@ -121,7 +121,7 @@ a:hover {
 
 .screen {
   display: flex;
-  min-width: 10em;
+  min-width: 8em;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
