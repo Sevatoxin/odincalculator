@@ -172,7 +172,9 @@ function clear() {
 }
 
 function calculate() {
-    if (currentOperation != undefined || currentOperation == "") {
+    if (currentOperation != undefined && currentOperation != "") {
+        console.log("I am calculating");
+        console.log(currentOperation);
         let num1;
         let num2;
         if (calculated != true) {
