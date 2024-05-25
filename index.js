@@ -88,7 +88,7 @@ calcButtons.forEach((button) => {
 window.addEventListener("keydown", (ev) => {
     let key = ev.key;
     let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    let operators = ["+", "-", "x", "/", "="];
+    let operators = ["+", "-", "x", "/", "=", "Enter"];
     let targetButton;
     if (numbers.includes(+key) || operators.includes(key)) {
         if (numbers.includes(+key)) {
@@ -101,7 +101,7 @@ window.addEventListener("keydown", (ev) => {
             if (key == "+") targetButton = document.querySelector(".plus");
             if (key == "-") targetButton = document.querySelector(".minus");
             if (key == "/") targetButton = document.querySelector(".division");
-            if (key == "=") targetButton = document.querySelector(".equal");
+            if (key == "=" || key =="Enter") targetButton = document.querySelector(".equal");
         }
 
         targetButton.click();
